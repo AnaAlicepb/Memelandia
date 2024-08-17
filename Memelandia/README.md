@@ -1,80 +1,89 @@
-# Memelandia
-Projeto final da Escola Britânica de Artes Criativas
-
-Cadastro de catálogo de memes
-
-Requisitos:
-1. Cadastro de usuários para envio de memes. 
-2. Cadastro de categorias de memes. 
-3. Cadastro de memes. Memes precisam necessariamente ter uma categoria.
-
-  O projeto possui tecnologias de métricas, logs e descobertas de microserviços 
-
-  1. Spring Boot
-O Spring Boot é a espinha dorsal do projeto, proporcionando uma estrutura sólida e fácil de configurar para aplicações Java. Utilizamos o spring-boot-starter-parent como parent POM, que oferece uma configuração padrão e otimizada para o Spring Boot. O spring-boot-starter-web é utilizado para simplificar o desenvolvimento de serviços web, enquanto o spring-boot-starter-data-jpa e spring-boot-starter-jdbc facilitam o acesso e manipulação de dados no banco de dados.
-
-2. PostgreSQL
-Para a persistência de dados, o projeto utiliza o PostgreSQL como sistema de gerenciamento de banco de dados relacional. A dependência postgresql garante a integração com o banco de dados, aproveitando suas características avançadas de performance e confiabilidade.
-
-3. Spring Cloud
-O Spring Cloud é utilizado para construir e gerenciar a arquitetura de microserviços. Com o spring-cloud-starter-openfeign, o projeto faz uso do Feign para simplificar chamadas HTTP entre serviços. O spring-cloud-starter-zookeeper-discovery é empregado para o registro e descoberta de serviços, utilizando o Apache Zookeeper como mecanismo de descoberta de serviços.
-
-4. Micrometer e Observabilidade
-Para monitoramento e rastreamento, o projeto incorpora o Micrometer com micrometer-tracing-bridge-brave e zipkin-reporter-brave. Estas bibliotecas são essenciais para a coleta de métricas e rastreamento distribuído, integrando-se com o Zipkin para análise e visualização de traces.
-
-5. Testes
-Para garantir a qualidade do código, o projeto utiliza o spring-boot-starter-test, que fornece suporte para testes unitários e de integração, promovendo uma abordagem abrangente para a validação das funcionalidades.
-
-6. Ferramentas e Plugins
-O Spring Boot Maven Plugin (spring-boot-maven-plugin) é empregado para a construção e execução da aplicação, simplificando o processo de embalagem e execução do projeto.
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Projeto Memelandia para cadastro de catálogo de memes">
+    <meta name="keywords" content="Spring Boot, PostgreSQL, Microserviços, Memes, Cadastro">
+    <meta name="author" content="Ana Alice Rodrigues">
+    
 </head>
 <body>
-    <h1>MemelandiaServices</h1>
-    <p>Este é um microserviço desenvolvido como parte do projeto Memelandia, responsável por fornecer serviços essenciais para a aplicação.</p>
-    <h2>Descrição</h2>
-    <p>O MemelandiaServices é um microserviço que oferece funcionalidades específicas para a aplicação Memelandia. Ele é desenvolvido utilizando Java e Spring Boot, e se comunica com outros microserviços através de APIs REST.</p>
-    <h2>Instalação</h2>
+
+<header>
+    <h1>Projeto Memelandia</h1>
+    </header>
+
+<details>
+    <summary>Índice</summary>
     <ol>
-        <li>Clone o repositório: <code>git clone https://github.com/caioskywalker/Memelandia.git</code></li>
-        <li>Navegue até o diretório do microserviço: <code>cd Memelandia/MemelandiaServices</code></li>
-        <li>Compile e construa o projeto utilizando Maven: <code>mvn clean install</code></li>
-        <li>Configure o banco de dados conforme as instruções no arquivo <code>application.properties</code>.</li>
-        <li>Execute o microserviço: <code>java -jar target/MemelandiaServices-0.0.1-SNAPSHOT.jar</code></li>
+        <li><a href="#sobre-o-projeto">Sobre o projeto</a></li>
+        <li><a href="#parte-tecnica">Parte Técnica</a></li>
+        <li><a href="#estrutura-dos-arquivos">Estrutura dos Arquivos</a></li>
+        <li><a href="#casos-de-uso">Casos de Uso</a></li>
+        <li><a href="#ferramentas">Ferramentas</a></li>
+        <li><a href="#contato">Contato</a></li>
     </ol>
-    <h2>Configuração do Banco de Dados</h2>
-    <p>O microserviço utiliza um banco de dados relacional para armazenar os dados. As configurações do banco de dados estão no arquivo <code>application.properties</code>. Certifique-se de ajustar as configurações de acordo com o seu ambiente.</p>
-    <h2>Endpoints</h2>
-    <p>O MemelandiaServices expõe os seguintes endpoints REST:</p>
+</details>
+
+<section id="sobre-o-projeto">
+    <h2>Sobre o projeto</h2>
+    <p>
+        O Memelandia é o projeto final desenvolvido por Ana Alice Rodrigues como parte do curso na Escola Britânica de Artes Criativas. Este projeto tem como objetivo o cadastro de um catálogo de memes, permitindo que usuários enviem memes, categorizem-nos, e gerenciem suas criações. O projeto é composto por múltiplos microserviços, utilizando tecnologias de métricas, logs e descobertas de serviços para uma experiência robusta e escalável.
+    </p>
+    <p>
+        Proposta de Valor: Oferecer uma plataforma eficiente e escalável para o cadastro e gestão de memes, integrando categorias, usuários e funcionalidades avançadas de microserviços.
+    </p>
+</section>
+
+<section id="parte-tecnica">
+    <h2>Parte Técnica</h2>
     <ul>
-        <li><code>GET /api/memes</code>: Retorna uma lista de memes.</li>
-        <li><code>POST /api/memes</code>: Adiciona um novo meme.</li>
-        <li><code>GET /api/memes/{id}</code>: Retorna os detalhes de um meme específico.</li>
-        <li><code>PUT /api/memes/{id}</code>: Atualiza as informações de um meme existente.</li>
-        <li><code>DELETE /api/memes/{id}</code>: Remove um meme.</li>
+        <li><strong>Spring Boot</strong>: Backbone do projeto, oferecendo uma estrutura sólida para aplicações Java. Inclui suporte para Spring Data JPA, JDBC, e web.</li>
+        <li><strong>PostgreSQL</strong>: Banco de dados relacional utilizado para persistência de dados.</li>
+        <li><strong>Spring Cloud</strong>: Utilizado para construir e gerenciar a arquitetura de microserviços, incluindo Feign para chamadas HTTP e Zookeeper para descoberta de serviços.</li>
+        <li><strong>Micrometer e Observabilidade</strong>: Ferramentas de monitoramento e rastreamento distribuído, integradas com Zipkin para análise de traces.</li>
+        <li><strong>Testes</strong>: Implementação de testes unitários e de integração usando Spring Boot Test.</li>
     </ul>
-    <h2>Classes Utilizadas</h2>
-    <p>O projeto utiliza várias classes para gerenciar a lógica de negócios e a persistência de dados. Algumas das principais classes incluem:</p>
+</section>
+
+<section id="estrutura-dos-arquivos">
+    <h2>Estrutura dos Arquivos</h2>
     <ul>
-        <li><code>MemesController</code>: Controlador REST que gerencia as requisições relacionadas aos memes.</li>
-        <li><code>Meme</code>: Classe de entidade que representa um meme no banco de dados.</li>
-        <li><code>MemeRepository</code>: Interface de repositório que estende <code>JpaRepository</code> para operações CRUD.</li>
-        <li><code>MemeService</code>: Classe de serviço que contém a lógica de negócios para manipulação de memes.</li>
+        <li><strong>MemesController</strong>: Controlador REST que gerencia as requisições relacionadas aos memes.</li>
+        <li><strong>Meme</strong>: Classe de entidade que representa um meme no banco de dados.</li>
+        <li><strong>MemeRepository</strong>: Interface de repositório que estende JpaRepository para operações CRUD.</li>
+        <li><strong>MemeService</strong>: Classe de serviço que contém a lógica de negócios para manipulação de memes.</li>
     </ul>
-    <h2>Uso</h2>
-    <p>Para utilizar o microserviço, faça requisições HTTP para os endpoints mencionados acima. Você pode usar ferramentas como Postman ou cURL para testar as APIs.</p>
-    <h2>Contribuição</h2>
-    <p>Contribuições são bem-vindas! Sinta-se à vontade para abrir issues e pull requests.</p>
-    <h2>Licença</h2>
-    <p>Este projeto está licenciado sob a licença MIT. Consulte o arquivo LICENSE para obter mais detalhes.</p>
+</section>
+
+<section id="casos-de-uso">
+    <h2>Casos de Uso</h2>
+    <ul>
+        <li>Cadastro de usuários para envio de memes.</li>
+        <li>Cadastro de categorias de memes.</li>
+        <li>Cadastro de memes, obrigatoriamente associados a uma categoria.</li>
+        <li>Consultas e manipulação de memes através de endpoints REST.</li>
+    </ul>
+</section>
+
+<section id="ferramentas">
+    <h2>Ferramentas</h2>
+    <ul>
+        <li><img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white" alt="Badge Java"></li>
+        <li><img src="https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=spring-boot&logoColor=white" alt="Badge Spring Boot"></li>
+        <li><img src="https://img.shields.io/badge/PostgreSQL-336791?style=for-the-badge&logo=postgresql&logoColor=white" alt="Badge PostgreSQL"></li>
+        <li><img src="https://img.shields.io/badge/Feign-007396?style=for-the-badge&logo=apache-feign&logoColor=white" alt="Badge Feign"></li>
+        <li><img src="https://img.shields.io/badge/Zipkin-000000?style=for-the-badge&logo=zipkin&logoColor=white" alt="Badge Zipkin"></li>
+    </ul>
+</section>
+
+<section id="contato">
+    <h2>Contato</h2>
+    <ul>
+        <li><a href="https://linktr.ee/anaeanali5" target="_blank"><img src="https://img.shields.io/badge/Ana_Alice_Rodrigues-blue?style=for-the-badge" alt="Perfil de Ana Alice Rodrigues"></a></li>
+    </ul>
+</section>
+
 </body>
 </html>
-
-
-
-
